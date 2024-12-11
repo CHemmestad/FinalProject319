@@ -37,7 +37,7 @@ const mysql = require("mysql2");
 const db = mysql.createConnection({
     host: "coms-3090-027.class.las.iastate.edu",
     user: "CalebHemmestad",
-    password: "",
+    password: "CalebHemmestad",
     database: "secoms3190",
     port: 3306
 });
