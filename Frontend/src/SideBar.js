@@ -27,6 +27,9 @@ const Sidebar = ({ userRole, username }) => {
         style={{
             width: '250px',
             backgroundColor: 'darkRed',
+            height: '100vh', // Set the height to 100vh to fill the entire screen
+            position: 'sticky', // Fix the sidebar on the left side
+            top: 0, 
         }}
         >
             <h2 className="text-center">Navigation</h2>
