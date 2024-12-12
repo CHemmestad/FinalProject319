@@ -23,7 +23,7 @@ const Sidebar = ({ userRole, username }) => {
         fetchProfilePicture();
     }, []);
     return (
-        <div className="d-flex flex-column vh-100 p-3 bg-light" style={{ width: '250px' }}>
+        <div className="d-flex flex-column vh-200 p-3 bg-light" style={{ width: '250px' }}>
             <h2 className="text-center">Navigation</h2>
             <ul className="nav flex-column">
                 <li className="nav-item">
@@ -48,9 +48,6 @@ const Sidebar = ({ userRole, username }) => {
                         </li>
                         <li className="nav-item">
                             <Link to="/deletecontact" className="nav-link text-dark">Delete Contact</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link to="/updatecontact" className="nav-link text-dark">Update Contact</Link>
                         </li>
                     </>
                 )}
