@@ -21,13 +21,13 @@ function About() {
                     You can reach me at cihem@iastate.edu<br/>
 
 
-                    Date : 10/20/2024</p>
+                    Date : 12/11/2024</p>
             </div>
         </div>
         <div class="row mb-3 text-center">
             <div class="col-8 themed-grid-col" style={{borderRadius: '2%'}}> 
                 <h3><strong>About Griffin</strong></h3>
-                <p style={{color: "#FFFFFF"}}>Hi im Griffin! I'm a junior in software engineering.<br/>Im currently taking SE/ComS319 Construction of User Interfaces for Fall 2024.<br/>You can reach me at griffinu@iastate.edu<br/>Date : 10/20/2024</p>
+                <p style={{color: "#FFFFFF"}}>Hi im Griffin! I'm a junior in software engineering.<br/>Im currently taking SE/ComS319 Construction of User Interfaces for Fall 2024.<br/>You can reach me at griffinu@iastate.edu<br/>Date : 12/11/2024</p>
             </div>
             <div class="col-3 themed-grid-col" style={{backgroundSize: 'cover'}}>
                 <img src={Griffin} style={{maxWidth: "300px"}}></img>

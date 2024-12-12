@@ -9,9 +9,9 @@ const AddContact = () => {
     const [preview, setPreview] = useState(null);
 
     const handleImageChange = (e) => {
-        const file = e.target.files[0];
-        setImage(file);
-        setPreview(URL.createObjectURL(file)); // Show preview
+        // const file = e.target.files[0];
+        // setImage(file);
+        // setPreview(URL.createObjectURL(file)); // Show preview
     };
 
     const handleSubmit = (e) => {
@@ -55,25 +55,46 @@ const AddContact = () => {
 
     return (
         <div className="container mt-4">
-            <h2 className="text-center">Add New Contact</h2>
+            <h2 className="text-center">Add New Movie</h2>
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
-                    <label className="form-label">Contact Name</label>
+                    <label className="form-label">Movie Title</label>
                     <input type="text" className="form-control" value={contactName} onChange={(e) => setContactName(e.target.value)} required />
                 </div>
                 <div className="mb-3">
-                    <label className="form-label">Phone Number</label>
+                    <label className="form-label">Movie Year</label>
                     <input type="text" className="form-control" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} required />
                 </div>
                 <div className="mb-3">
-                    <label className="form-label">Message</label>
-                    <textarea className="form-control" value={message} onChange={(e) => setMessage(e.target.value)} ></textarea>
+                    <label className="form-label">Movie Length</label>
+                    <input type="text" className="form-control" value={message} onChange={(e) => setMessage(e.target.value)} required ></input>
                 </div>
                 <div className="mb-3">
-                    <label className="form-label">Contact Image</label>
+                    <label className="form-label">Movie Category</label>
+                    <input type="text" className="form-control" value={message} onChange={(e) => setMessage(e.target.value)} required ></input>
+                </div>
+                <div className="mb-3">
+                    <label className="form-label">Movie Image URL</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Enter image URL"
+                        onChange={handleImageChange}
+                    />
+                    {preview && (
+                        <img
+                            src={preview}
+                            alt="Preview"
+                            className="mt-3"
+                            style={{ width: '100px', height: '100px', objectFit: 'cover' }}
+                        />
+                    )}
+                </div>
+                {/* <div className="mb-3">
+                    <label className="form-label">Movie Image</label>
                     <input type="file" className="form-control" onChange={handleImageChange} />
                     {preview && (<img src={preview} alt="Preview" className="mt-3" style={{ width: '100px', height: '100px', objectFit: 'cover' }} />)}
-                </div>
+                </div> */}
                 <button type="submit" className="btn btn-primary">
                     Add Contact
                 </button>

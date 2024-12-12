@@ -18,21 +18,28 @@ const Contacts = ({ contacts, setContacts }) => {
         fetchContacts();
     }, []);
     return (
-        contacts.map((contact) => (
-            <li key={contact.id} className="list-group-item d-flex align-items-center">
-                {contact.image_url && (
+        <div
+            className="d-flex flex-wrap justify-content-center"
+        >
+            {contacts.map((contact) => (
+                <div className="card shadow-sm themed-movie-card m-2" style={{ width: '18rem' }}>
                     <img
-                        src={`http://localhost:8081${contact.image_url}`}
-                        alt={contact.contact_name}
-                        style={{ width: '50px', height: '50px', marginRight: '15px', objectFit: 'cover' }}
+                        src={`${contact.url}`}
+                        className="card-img-top"
+                        style={{ height: '300px', objectFit: 'cover', borderRadius: '5%' }}
+                        alt={contact.title}
                     />
-                )}
-                <div>
-                    <strong>{contact.contact_name}</strong> - {contact.phone_number}
-                    <p>{contact.message}</p>
+                    <div className="card-body">
+                        <p className="card-text">
+                            <strong>{contact.title}</strong><br></br>{contact.year} - {contact.duration} - {contact.category}<br></br>
+                            <span style={{ color: "gold", marginLeft: '7px' }}>
+                                {"★".repeat(contact.stars)}
+                            </span>
+                        </p>
+                    </div>
                 </div>
-
-            </li>
-        )));
+            ))}
+        </div>
+    );
 }
 export default Contacts;

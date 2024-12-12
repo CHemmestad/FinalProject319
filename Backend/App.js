@@ -92,15 +92,15 @@ app.post('/contact/messages', (req, res) => {
             if (err) {
                 // In case of an error occurs
                 console.log("Error in /contact/messages " + err);
-                res.status(409).send({ error: "Error adding Messages " + err });
+                res.status(409).send({ error: "Error adding Review " + err });
             } else {
                 // If it was successful
-                res.status(201).send("Message added successfully");
+                res.status(201).send("Review added successfully");
             }
         });
     } catch (err) {
         console.err("Error in /contact/messages " + err);
-        res.status(500).send({ error: 'Error sending message' + err });
+        res.status(500).send({ error: 'Error sending review' + err });
     }
 });
 
@@ -192,7 +192,67 @@ app.get('/user/profile_picture/:contact_name', (req, res) => {
 
 app.get("/contact", (req, res) => {
     try {
-        db.query("SELECT * FROM contact", (err, result) => {
+        db.query("SELECT * FROM movies", (err, result) => {
+            if (err) {
+                console.error({ error: "Error reading all posts:" + err });
+                return res.status(500).send({ error: "Error reading all contacts" + err });
+            }
+            res.status(200).send(result);
+        });
+    } catch (err) {
+        console.error({ error: "An unexpected error occurred" + err });
+        res.status(500).send({ error: "An unexpected error occurred" + err });
+    }
+});
+
+app.get("/contact/action", (req, res) => {
+    try {
+        db.query("SELECT * FROM movies WHERE category = 'action'", (err, result) => {
+            if (err) {
+                console.error({ error: "Error reading all posts:" + err });
+                return res.status(500).send({ error: "Error reading all contacts" + err });
+            }
+            res.status(200).send(result);
+        });
+    } catch (err) {
+        console.error({ error: "An unexpected error occurred" + err });
+        res.status(500).send({ error: "An unexpected error occurred" + err });
+    }
+});
+
+app.get("/contact/comedy", (req, res) => {
+    try {
+        db.query("SELECT * FROM movies WHERE category = 'comedy'", (err, result) => {
+            if (err) {
+                console.error({ error: "Error reading all posts:" + err });
+                return res.status(500).send({ error: "Error reading all contacts" + err });
+            }
+            res.status(200).send(result);
+        });
+    } catch (err) {
+        console.error({ error: "An unexpected error occurred" + err });
+        res.status(500).send({ error: "An unexpected error occurred" + err });
+    }
+});
+
+app.get("/contact/thriller", (req, res) => {
+    try {
+        db.query("SELECT * FROM movies WHERE category = 'thriller'", (err, result) => {
+            if (err) {
+                console.error({ error: "Error reading all posts:" + err });
+                return res.status(500).send({ error: "Error reading all contacts" + err });
+            }
+            res.status(200).send(result);
+        });
+    } catch (err) {
+        console.error({ error: "An unexpected error occurred" + err });
+        res.status(500).send({ error: "An unexpected error occurred" + err });
+    }
+});
+
+app.get("/contact/animated", (req, res) => {
+    try {
+        db.query("SELECT * FROM movies WHERE category = 'animated'", (err, result) => {
             if (err) {
                 console.error({ error: "Error reading all posts:" + err });
                 return res.status(500).send({ error: "Error reading all contacts" + err });
@@ -241,13 +301,13 @@ app.get("/:id", async (req, res) => {
     const query = { id: id };
 });
 
-app.get("/contact/name", (req, res) => {
-    const { contact_name } = req.query;
-    if (!contact_name) {
-        return res.status(400).send({ error: "contact_name is required" });
+app.get("/contact/title", (req, res) => {
+    const { title } = req.query;
+    if (!title) {
+        return res.status(400).send({ error: "title is required" });
     }
-    const query = "SELECT * FROM contact WHERE LOWER(contact_name) LIKE LOWER(?)";
-    const searchValue = `%${contact_name}%`; // Add wildcards for partial match
+    const query = "SELECT * FROM movies WHERE LOWER(title) LIKE LOWER(?)";
+    const searchValue = `%${title}%`; // Add wildcards for partial match
     try {
         db.query(query, [searchValue], (err, result) => {
             if (err) {
@@ -330,7 +390,7 @@ app.post("/contact", upload.single("image"), (req, res) => {
 
 app.delete("/contact/:id", (req, res) => {
     const id = req.params.id;
-    const query = "DELETE FROM contact WHERE id = ?";
+    const query = "DELETE FROM movies WHERE id = ?";
     try {
         db.query(query, [id], (err, result) => {
             if (err) {
@@ -339,7 +399,7 @@ app.delete("/contact/:id", (req, res) => {
             } else if (result.affectedRows === 0) {
                 res.status(404).send({ err: "Contact not found" });
             } else {
-                res.status(200).send("Contact deleted successfully");
+                res.status(200).send("Movie deleted successfully");
             }
         });
     } catch (err) {

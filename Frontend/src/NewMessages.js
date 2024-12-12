@@ -13,7 +13,7 @@ const NewMessage = () => {
             return;
         }
         try {
-            const response = await fetch(`http://localhost:8081/contact/name?contact_name=${encodeURIComponent(contactName)}`);
+            const response = await fetch(`http://localhost:8081/contact/title?title=${encodeURIComponent(contactName)}`);
             if (!response.ok) {
                 const errorMessage = await response.json();
                 throw new Error(`Failed to fetch contacts: ${errorMessage.error}`);
@@ -62,12 +62,12 @@ const NewMessage = () => {
     };
     return (
         <div className="container">
-            <h2 className="text-center mt-4">Add a New Message</h2>
+            <h2 className="text-center mt-4">Add a New Review</h2>
             <div className="input-group mb-3">
                 <input
                     type="text"
                     className="form-control"
-                    placeholder="Enter contact name"
+                    placeholder="Enter movie name"
                     value={contactName}
                     onChange={(e) => setContactName(e.target.value.toLowerCase())}
                 />
@@ -80,24 +80,27 @@ const NewMessage = () => {
                     <li key={contact.id} className="list-group-item">
                         {/* Contact Details */}
                         <div className="d-flex align-items-center">
-                            {contact.image_url && (
+                            {contact.url && (
                                 <img
-                                    src={`http://localhost:8081${contact.image_url}`}
-                                    alt={contact.contact_name}
+                                    src={`${contact.url}`}
+                                    alt={contact.title}
                                     style={{ width: "50px", height: "50px", marginRight: "15px", objectFit: "cover" }}
                                 />
                             )}
                             <div>
-                                <strong>{contact.contact_name}</strong> - {contact.phone_number}
+                                <strong>{contact.title}</strong> - {contact.year}
+                                <span style={{ color: "gold", marginLeft: '7px' }}>
+                                    {"★".repeat(contact.stars)}
+                                </span>
                             </div>
                             {/* Arrow Button to Show Messages */}
-                            <button className="btn btn-sm btn-outline-primary" style={{margin:"7px"}} onClick={() => fetchMessages(contact.id)}>
+                            <button className="btn btn-sm btn-outline-primary" style={{ margin: "7px" }} onClick={() => fetchMessages(contact.id)}>
                                 {/* Arrow Icon */}
-                                Messages
+                                Reviews
                             </button>
                             {/* Send Message Button */}
                             <button className="btn btn-outline-secondary btn-sm ms-auto" onClick={() => setSendContactId(contact.id)}>
-                                New message
+                                New Review
                             </button>
                         </div>
                         {/* Messages List */}
@@ -105,7 +108,7 @@ const NewMessage = () => {
                             <ul className="list-group mt-2">
                                 {messages[contact.id].map((msg) => (
                                     <li key={msg.id} className="list-group-item">
-                                        {msg.message} <small className="text-muted">({msg.message_timestamp})</small>
+                                        {msg.message} <small className="text-muted"></small>
                                     </li>
                                 ))}
                             </ul>

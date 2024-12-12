@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
+import logo from "./Images/Logo.webp"
 
 function Home() {
     const [aboutMovieReview, setAboutMovieReview] = useState('');
@@ -32,7 +33,7 @@ function Home() {
                 <div
                     className="col-3 themed-grid-col"
                     style={{
-                        backgroundImage: "url('./Images/Logo.webp')",
+                        backgroundImage: `url(${logo})`,
                         backgroundSize: 'cover',
                         borderRadius: '50%',
                     }}
@@ -51,7 +52,7 @@ function Home() {
                     <h3>
                         <strong>About Movie Reviews</strong>
                     </h3>
-                    <p id="aboutMovieReview">{aboutMovieReview}</p>
+                    <p id="aboutMovieReview">Welcome to Movie Reviews, the ultimate destination for movie lovers! Whether you're a casual viewer or a cinema fanatic, our website brings you fresh, insightful, and spoiler-free reviews of the latest blockbusters, indie gems, and timeless classics. Dive deep into thoughtful critiques, discover hidden cinematic treasures, and join a community of passionate moviegoers who love to discuss, debate, and celebrate the art of film. With Movie Reviews, you’ll always know what’s worth watching next. Lights, camera, action—let the reviews roll!</p>
                 </div>
             </div>
         </main>

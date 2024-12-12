@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import logo from './logo.svg';
 import './App.css';
 import reportWebVitals from './reportWebVitals.js';
+import background from "./Images/Background.webp"
 import SideBar from "./SideBar.js";
 import Contacts from "./Contacts.js";
 import AddContact from "./AddContacts.js";
@@ -14,6 +15,10 @@ import NewMessage from "./NewMessages.js";
 import Home from "./Home.js";
 import FAQs from "./FAQ.js"; 
 import About from "./About.js";
+import Action from "./Action.js";
+import Comedy from "./Comedy.js";
+import Thriller from "./Thriller.js";
+import Animated from "./Animated.js";
 // import { useState } from 'react';
 
 function App() {
@@ -27,11 +32,23 @@ function App() {
         <Router>
           <div className="d-flex">
             {userRole && <SideBar userRole={userRole} username={username} password={password} />}
-            <div className="flex-grow-1 p-3">
-              <h1 className="text-center">Phone Contacts App</h1>
+            <body>
+            <div className="flex-grow-1 p-3" 
+                        style={{
+                          width: '88vw',
+                          backgroundImage: `url(${background})`,
+                          backgroundSize: 'cover',
+                          backgroundPosition: 'center',
+                          backgroundAttachment: 'fixed',
+                    }}>
+              <h1 className="text-center">Movie Reviews App</h1>
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/contacts" element={<Contacts contacts={contacts} setContacts={setContacts} />} />
+                <Route path="/contacts/action" element={<Action contacts={contacts} setContacts={setContacts} />} />
+                <Route path="/contacts/animated" element={<Animated contacts={contacts} setContacts={setContacts} />} />
+                <Route path="/contacts/comedy" element={<Comedy contacts={contacts} setContacts={setContacts} />} />
+                <Route path="/contacts/thriller" element={<Thriller contacts={contacts} setContacts={setContacts} />} />
                 <Route path="/searchContacts" element={<SearchContact contacts={contacts} setContacts={setContacts} />} />
                 <Route path="/new_message" element={<NewMessage contacts={contacts} setContacts={setContacts} />} />
                 <Route path="/FAQs" element={<FAQs />} />
@@ -45,6 +62,7 @@ function App() {
                 )}
               </Routes>
             </div>
+            </body>
           </div>
         </Router>
       ) : (

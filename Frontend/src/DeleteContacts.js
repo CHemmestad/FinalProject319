@@ -11,7 +11,7 @@ const DeleteContact = ({ contacts, setContacts }) => {
             return;
         }
         try {
-            const response = await fetch(`http://localhost:8081/contact/name?contact_name=${encodeURIComponent(contactName)}`);
+            const response = await fetch(`http://localhost:8081/contact/title?title=${encodeURIComponent(contactName)}`);
             // Http status code 200, 201 is ok
             if (!response.ok) {
                 throw new Error("Failed to fetch contacts");
@@ -43,9 +43,9 @@ const DeleteContact = ({ contacts, setContacts }) => {
     return (
         <div className="container">
             {/* Input name or partial name for FETCH */}
-            <h2 className="text-center mt-4">Delete Contact</h2>
+            <h2 className="text-center mt-4">Delete Movie</h2>
             <div className="input-group mb-3">
-                <input type="text" className="form-control" placeholder="Enter contact name"
+                <input type="text" className="form-control" placeholder="Enter movie name"
                     value={contactName}
                     onChange={(e) => setContactName(e.target.value.toLowerCase())}
                 />
@@ -58,16 +58,18 @@ const DeleteContact = ({ contacts, setContacts }) => {
                 {contactsQuery.map((contact) => (
                     <li key={contact.id} className="list-group-item d-flex justify-content-between align-items-center">
                         <div className="d-flex align-items-center">
-                            {contact.image_url && (
+                            {contact.url && (
                                 <img
-                                    src={`http://localhost:8081${contact.image_url}`}
-                                    alt={contact.contact_name}
+                                    src={`${contact.url}`}
+                                    alt={contact.title}
                                     style={{ width: "50px", height: "50px", marginRight: "15px", objectFit: "cover" }}
                                 />
                             )}
                             <div>
-                                <strong>{contact.contact_name}</strong> - {contact.phone_number}
-                                <p>{contact.message}</p>
+                                <strong>{contact.title}</strong> - {contact.year}
+                                <span style={{ color: "gold", marginLeft: '7px' }}>
+                                    {"★".repeat(contact.stars)}
+                                </span>
                             </div>
                         </div>
                         {/* Delete contact button */}
