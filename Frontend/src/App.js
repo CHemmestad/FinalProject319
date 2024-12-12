@@ -36,10 +36,12 @@ function App() {
             <div className="flex-grow-1 p-3" 
                         style={{
                           width: '88vw',
+                          minHeight: '100vh',
                           backgroundImage: `url(${background})`,
                           backgroundSize: 'cover',
                           backgroundPosition: 'center',
                           backgroundAttachment: 'fixed',
+                          backgroundColor: 'darkRed',
                     }}>
               <h1 className="text-center">Movie Reviews App</h1>
               <Routes>
