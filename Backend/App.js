@@ -1,6 +1,6 @@
-// Author: Caleb Hemmestad
-// ISU Netid : cihem@iastate.edu
-// Date :  11 17, 2024
+// Author: Caleb Hemmestad & Griffin Urban
+// ISU Netid : cihem@iastate.edu | griffinu@iastate.edu
+// Date :  12 11, 2024
 
 var express = require("express");
 var cors = require("cors");
