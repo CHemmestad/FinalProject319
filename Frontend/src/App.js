@@ -12,6 +12,7 @@ import SearchContact from "./SearchContacts.js";
 import Authentication from "./Login";
 import NewMessage from "./NewMessages.js";
 import Home from "./Home.js";
+import FAQs from "./FAQ.js"; 
 // import { useState } from 'react';
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
                 <Route path="/contacts" element={<Contacts contacts={contacts} setContacts={setContacts} />} />
                 <Route path="/searchContacts" element={<SearchContact contacts={contacts} setContacts={setContacts} />} />
                 <Route path="/new_message" element={<NewMessage contacts={contacts} setContacts={setContacts} />} />
+                <Route path="/FAQs" element={<FAQs />} />
                 {userRole === "admin" && (
                   <>
                     <Route path="/add-contact" element={<AddContact contacts={contacts} setContacts={setContacts} />} />

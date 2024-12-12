@@ -38,6 +38,9 @@ const Sidebar = ({ userRole, username }) => {
                 <li className="nav-item">
                     <Link to="/new_message" className="nav-link text-dark">Add New Message</Link>
                 </li>
+                <li className="nav-item">
+                    <Link to="/FAQs" className="nav-link text-dark">FAQs</Link>
+                </li>
                 {userRole === "admin" && (
                     <>
                         <li className="nav-item">
