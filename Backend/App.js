@@ -35,11 +35,11 @@ const path = require("path");
 //jdbc:mysql://coms-3090-027.class.las.iastate.edu:3306/new_schema
 const mysql = require("mysql2");
 const db = mysql.createConnection({
-    host: "coms-3090-027.class.las.iastate.edu",
-    user: "CalebHemmestad",
-    password: "CalebHemmestad",
-    database: "secoms3190",
-    port: 3306
+    host: ,
+    user: ,
+    password: ,
+    database: ,
+    port: 
 });
 
 // Set up multer for image upload
